@@ -1,6 +1,8 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 //TODO Change images to actual working examples of the graphs
+//TODO fix images on medium sized screens
 
 class App extends React.Component {
   render(){
@@ -15,31 +17,37 @@ class App extends React.Component {
           </p>
           <div className="row">
             <div className="col s12 m4">
-              <div className="s">
-                <img src="https://sharepoint.github.io/sp-dev-fx-controls-react/assets/BarChart.png" />
-                <h2>bar</h2>
-              </div>
+              <Link to='/bar'>
+                <div className="s">
+                  <img src="https://sharepoint.github.io/sp-dev-fx-controls-react/assets/BarChart.png" />
+                  <h2>bar</h2>
+                </div>
+              </Link>
             </div>
             <div className="col s12 m4">
-              <div className="s">
-                <img src="https://www.excel-easy.com/examples/images/line-chart/line-chart.png" />
-                <h2>line</h2>
-              </div>
+              <Link to="/test">
+                <div className="s">
+                  <img src="https://www.excel-easy.com/examples/images/line-chart/line-chart.png" />
+                  <h2>line</h2>
+                </div>
+              </Link>
 
             </div>
             <div className="col s12 m4">
-              <div className="s">
-                <img src="https://1.bp.blogspot.com/-nyrFCBD1qQM/WZEoxmDoW-I/AAAAAAAAQew/LLIM0FtNdzQb3IRvtoTYgWpvKoajz6HJgCLcBGAs/s1600/Angular%2B4%2B%2Bpie%2Bchart%2Bexample.png" />
-                <h2>pie</h2>
-              </div>
+              <Link to="/test">
+                <div className="s">
+                  <img src="https://1.bp.blogspot.com/-nyrFCBD1qQM/WZEoxmDoW-I/AAAAAAAAQew/LLIM0FtNdzQb3IRvtoTYgWpvKoajz6HJgCLcBGAs/s1600/Angular%2B4%2B%2Bpie%2Bchart%2Bexample.png" />
+                  <h2>pie</h2>
+                </div>
+              </Link>
             </div>
           </div>
           <p>
-            For even more options Click the hamburger menu icon at the top left of the page.<br />
+            For even more options, click the hamburger menu icon at the top left of the page.<br />
             Alternatively, on mobile, just swipe from the left.
           </p>
         </div>
-        
+
       </div>
     )
   }

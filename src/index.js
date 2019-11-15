@@ -8,6 +8,7 @@ import {Route, Link, BrowserRouter as Router} from 'react-router-dom';
 import App from './components/app';
 import SideNav from './components/sidenav';
 import Test from './components/test';
+import Barchart from './components/barchart';
 
 const routing = (
   <Router>
@@ -15,6 +16,7 @@ const routing = (
     <div className="container">
       <Route exact path="/" component={App} />
       <Route path="/test" component={Test} />
+      <Route path="/bar" component={Barchart} />
     </div>
   </Router>
 )

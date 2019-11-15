@@ -40,17 +40,18 @@ body {
 
   }
   .s{
-    background-color:$cream; 
+    background-color:white; 
     border-radius:20px;
     height:200px;
     margin-bottom: 5px;
     &:hover {
       background-color:$red;
-      color:$cream;
+      color:white;
     }
     h2{
       font-size:2em;
       margin-top:20px;
+      color:black;
     }
     img{
       margin-top:20px;

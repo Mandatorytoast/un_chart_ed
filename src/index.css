@@ -20,16 +20,17 @@ body {
     font-family: "Montserrat" sans-serif;
     font-size: 1.2em; }
   #app .s {
-    background-color: #FFFBF3;
+    background-color: white;
     border-radius: 20px;
     height: 200px;
     margin-bottom: 5px; }
     #app .s:hover {
       background-color: #FA255e;
-      color: #FFFBF3; }
+      color: white; }
     #app .s h2 {
       font-size: 2em;
-      margin-top: 20px; }
+      margin-top: 20px;
+      color: black; }
     #app .s img {
       margin-top: 20px;
       height: 100px;
