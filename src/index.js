@@ -12,7 +12,7 @@ import Test from './components/test';
 const routing = (
   <Router>
     <SideNav />
-    <div>
+    <div className="container">
       <Route exact path="/" component={App} />
       <Route path="/test" component={Test} />
     </div>

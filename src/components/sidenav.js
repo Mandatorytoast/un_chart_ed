@@ -15,7 +15,7 @@ class SideNav extends React.Component {
   }
   render(){
     return (
-      <div>
+      <div id="side-nav">
         <ul id="slide-out" className="sidenav">
           <li />
           <li>
@@ -26,7 +26,7 @@ class SideNav extends React.Component {
           </li>
         </ul>
         <a href="#" data-target="slide-out" className="sidenav-trigger">
-          <button className='btn'>slide</button>
+          <i className="material-icons">menu</i>
         </a>
       </div>    
     )
