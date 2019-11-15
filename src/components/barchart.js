@@ -6,6 +6,7 @@ class Barchart extends React.Component {
     super(props);
     this.state = {
       options: {
+        colors: ["#FA255e"],
         chart: {
           id: "example bar",
         },
