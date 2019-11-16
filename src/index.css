@@ -6,12 +6,18 @@ body {
   @media (min-width: 600px) {
     body {
       height: 100vh; } }
+  body ::selection {
+    background-color: #FA255e;
+    color: #FFFFFF; }
+  body ::-moz-selection {
+    background-color: #FA255e;
+    color: #FFFFFF; }
 
 #app {
   text-align: center; }
   #app h1, #app h2 {
     font-family: "Bebas Neue", cursive; }
-  @media (min-width: 700px) {
+  @media (min-width: 600px) {
     #app .intro-block {
       width: 80%;
       margin-left: auto;
@@ -43,3 +49,20 @@ body {
 
 #side-nav i {
   color: #000000; }
+
+.chart h1 {
+  font-family: "Bebas Neue", cursive;
+  text-align: center;
+  margin-bottom: 40px; }
+
+.chart input {
+  background-color: #FA255e; }
+
+.chart button {
+  background-color: #FFFFFF;
+  font-family: "Bebas Neue", cursive;
+  color: #000000;
+  font-size: 1.2em; }
+  .chart button:hover {
+    background-color: #FA255e;
+    color: #FFFFFF; }

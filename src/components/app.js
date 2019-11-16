@@ -19,7 +19,7 @@ class App extends React.Component {
             <div className="col s12 m12 l4">
               <Link to='/bar'>
                 <div className="s">
-                  <img src="https://sharepoint.github.io/sp-dev-fx-controls-react/assets/BarChart.png" />
+                  <img src="https://sharepoint.github.io/sp-dev-fx-controls-react/assets/BarChart.png" alt="bar chart" />
                   <h2>bar</h2>
                 </div>
               </Link>
@@ -27,7 +27,7 @@ class App extends React.Component {
             <div className="col s12 m12 l4">
               <Link to="/test">
                 <div className="s">
-                  <img src="https://www.excel-easy.com/examples/images/line-chart/line-chart.png" />
+                  <img src="https://www.excel-easy.com/examples/images/line-chart/line-chart.png" alt="line chart" />
                   <h2>line</h2>
                 </div>
               </Link>
@@ -35,7 +35,7 @@ class App extends React.Component {
             <div className="col s12 m12 l4">
               <Link to="/test">
                 <div className="s">
-                  <img src="https://1.bp.blogspot.com/-nyrFCBD1qQM/WZEoxmDoW-I/AAAAAAAAQew/LLIM0FtNdzQb3IRvtoTYgWpvKoajz6HJgCLcBGAs/s1600/Angular%2B4%2B%2Bpie%2Bchart%2Bexample.png" />
+                  <img src="https://1.bp.blogspot.com/-nyrFCBD1qQM/WZEoxmDoW-I/AAAAAAAAQew/LLIM0FtNdzQb3IRvtoTYgWpvKoajz6HJgCLcBGAs/s1600/Angular%2B4%2B%2Bpie%2Bchart%2Bexample.png" alt="pie chart"/>
                   <h2>pie</h2>
                 </div>
               </Link>

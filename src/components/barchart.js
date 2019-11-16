@@ -25,8 +25,8 @@ class Barchart extends React.Component {
 
   inputEvent(e){
     let currentData = [ ...this.state.series[0].data];
-    currentData[0] = parseInt(e.target.value)
-    console.log(currentData);
+    let targetInt = parseInt(e.target.name)
+    currentData[targetInt] = parseInt(e.target.value)
     this.setState({
       series:[{
         ...this.state.series[0],
@@ -35,11 +35,12 @@ class Barchart extends React.Component {
     });
   }
 
-
-  renderInput(i) {
-    return(
-      <input type='text' name={i} onInput={this.inputEvent}/>
-    )
+  renderInput() { 
+    let inputArray = []
+    for (var i = 0; i < this.state.series[0].data.length; i++) {
+      inputArray.push(<input type='text' name={i} onInput={this.inputEvent}/>)
+    }
+    return inputArray;
   }
 
   handleInput(){
@@ -61,30 +62,33 @@ class Barchart extends React.Component {
     }) 
   }
 
+
   render() {
     return (
-      <div className="row">
-        <div className="col l8">
-          <div className="bar-chart">
-            <div className="row">
-              <div className="mixed-chart">
-                <Chart
-                  options={this.state.options}
-                  series={this.state.series}
-                  type="bar"
-                  width="500"
-                />
-              </div>
-            </div> 
+      <div className="chart">
+        <h1>Bar Chart</h1>
+        <div className="row">
+          <div className="col l8">
+            <div className="bar-chart">
+              <div className="row">
+                <div className="mixed-chart">
+                  <Chart
+                    options={this.state.options}
+                    series={this.state.series}
+                    type="bar"
+                    width="500"
+                  />
+                </div>
+              </div> 
+            </div>
           </div>
-        </div>
-        <div className="col l4">
-          <div className="inputs">         
-            {this.renderInput(0)}
-            {this.renderInput(1)}
-          </div>
-          <div className="controls">
-            <button className='btn' onClick={this.handleInput}>add</button>
+          <div className="col l4">
+            <div className="inputs">         
+              {this.renderInput()}
+            </div>
+            <div className="controls">
+              <button className='btn' onClick={this.handleInput}>add</button>
+            </div>
           </div>
         </div>
       </div>

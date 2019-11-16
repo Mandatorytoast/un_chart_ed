@@ -18,6 +18,14 @@ body {
   @media (min-width: 600px) {
     height:100vh;
   }
+  ::selection{
+    background-color:$red;
+    color:#FFFFFF;
+  }
+  ::-moz-selection{
+    background-color:$red;
+    color:#FFFFFF;
+  }
 
 }
 
@@ -68,5 +76,27 @@ body {
 #side-nav{
   i{
     color: $black; 
+  }
+}
+
+.chart{
+  h1{
+    font-family: $bebas-neue;
+    text-align:center;
+    margin-bottom: 40px;
+  }
+  input{
+    background-color:$red;
+  }
+  button{
+    background-color: #FFFFFF;
+    font-family: $bebas-neue;
+    color:$black;
+    font-size:1.2em;
+
+    &:hover {
+      background-color: $red;
+      color: #FFFFFF;
+    }
   }
 }
