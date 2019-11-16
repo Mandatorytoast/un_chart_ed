@@ -16,7 +16,7 @@ class App extends React.Component {
             <br />
           </p>
           <div className="row">
-            <div className="col s12 m4">
+            <div className="col s12 m12 l4">
               <Link to='/bar'>
                 <div className="s">
                   <img src="https://sharepoint.github.io/sp-dev-fx-controls-react/assets/BarChart.png" />
@@ -24,16 +24,15 @@ class App extends React.Component {
                 </div>
               </Link>
             </div>
-            <div className="col s12 m4">
+            <div className="col s12 m12 l4">
               <Link to="/test">
                 <div className="s">
                   <img src="https://www.excel-easy.com/examples/images/line-chart/line-chart.png" />
                   <h2>line</h2>
                 </div>
               </Link>
-
             </div>
-            <div className="col s12 m4">
+            <div className="col s12 m12 l4">
               <Link to="/test">
                 <div className="s">
                   <img src="https://1.bp.blogspot.com/-nyrFCBD1qQM/WZEoxmDoW-I/AAAAAAAAQew/LLIM0FtNdzQb3IRvtoTYgWpvKoajz6HJgCLcBGAs/s1600/Angular%2B4%2B%2Bpie%2Bchart%2Bexample.png" />

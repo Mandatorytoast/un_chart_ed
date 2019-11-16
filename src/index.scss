@@ -28,10 +28,14 @@ body {
   }
   .intro-block {
     @media (min-width: 600px) {
-      width:60%;
+      width:80%;
       margin-left:auto;
       margin-right:auto;
-
+    }
+    @media (min-width: 1000px) {
+      width:70%;
+      margin-left:auto;
+      margin-right:auto;
     }
     p{
       font-family: $montserrat;
