@@ -1,9 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 
-
-//use the state data in order to refresh the value of the inputfields 
-
 class Piechart extends React.Component {
   constructor(props) {
     super(props);
@@ -79,10 +76,10 @@ class Piechart extends React.Component {
       inputArray.push(
         <div className='row' key={'input' + i}>
           <div className='col m8'>
-            <input type='text' name={'label' + i}  defaultValue={labelValue} onInput={this.handleLabelInput}/>
+            <input type='text' name={'label' + i}  value={labelValue} onChange={this.handleLabelInput}/>
           </div>
           <div className='col m3'> 
-            <input type='number' name={i} onInput={this.inputEvent} defaultValue={dataValue}/>
+            <input type='number' name={i} onChange={this.inputEvent} value={dataValue}/>
           </div> 
           <div className='col m1'>
             <button className='btn waves-effect' id={'remove-button' + i} onClick={this.handleRemoveInput}>Remove</button> 
