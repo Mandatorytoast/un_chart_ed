@@ -4,59 +4,58 @@ import Chart from 'react-apexcharts';
 
 //use the state data in order to refresh the value of the inputfields 
 
-class Barchart extends React.Component {
+class Piechart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       options: {
-        colors: ["#FA255e"],
-        chart: {
-          id: "example bar",
-        },
-        xaxis: {
-          categories: ["example"],
-        }
+        labels: ['A', 'B', 'C']
       },
-      series: [{
-        name: "example-series",
-        data: [10],
-      }]
+
+      series: [22,33,44],
     }
-    this.inputEvent = this.inputEvent.bind(this);
+
     this.handleInput = this.handleInput.bind(this);
+    this.inputEvent = this.inputEvent.bind(this);
     this.handleLabelInput = this.handleLabelInput.bind(this);
     this.handleRemoveInput = this.handleRemoveInput.bind(this);
   }
+    
 
   inputEvent(e){
-    let currentData = [ ...this.state.series[0].data];
-    let targetInt = parseInt(e.target.name)
-    currentData[targetInt] = parseInt(e.target.value)
+    let currentData = [ ...this.state.series];
+    let targetInt = parseInt(e.target.name);
+    if (isNaN(parseInt(e.target.value))){
+      currentData[targetInt] = 0;
+    } else {
+      if (parseInt(e.target.value.slice(0, 1)) === 0){
+        currentData[targetInt] = parseInt(e.target.value.slice(1, e.target.value.length));
+        e.target.value = currentData[targetInt];
+      }else {
+        currentData[targetInt] = parseInt(e.target.value);
+      }
+    }
     this.setState({
-      series:[{
-        ...this.state.series[0],
-        data: currentData,
-      }]
+      series: currentData,
     });
   }
+    
 
   handleLabelInput(e) {
-    let currentData = [ ...this.state.options.xaxis.categories ];
+    let currentData = [ ...this.state.options.labels ];
     let targetLabel = parseInt(e.target.name.slice(5, e.target.name.length));
     currentData[targetLabel] = e.target.value;
     this.setState({
       options:{
         ...this.state.options,
-        xaxis: {
-          categories: currentData,
-        } 
+        labels: currentData,
       }
     });
   }
 
   handleRemoveInput(e){
-    let currentData = [ ...this.state.series[0].data ];
-    let currentCategories = [ ...this.state.options.xaxis.categories ];
+    let currentData = [ ...this.state.series];
+    let currentCategories = [ ...this.state.options.labels ];
     let index = parseInt(e.target.id.slice(13, e.target.name.length));
 
     currentData.splice(index, 1);
@@ -65,27 +64,22 @@ class Barchart extends React.Component {
     this.setState({
       options: {
         ...this.state.options,
-        xaxis: {
-          categories: currentCategories,
-        },
+        labels: currentCategories,
       },
-      series: [{
-        ...this.state.series[0],
-        data: currentData,
-      }]
+      series: currentData,
     });
 
   }
 
   renderInput() { 
     let inputArray = []
-    for (var i = 0; i < this.state.series[0].data.length; i++) {
-      let dataValue = this.state.series[0].data[i]
-      let labelValue = this.state.options.xaxis.categories[i]
+    for (var i = 0; i < this.state.series.length; i++) {
+      let dataValue = this.state.series[i];
+      let labelValue = this.state.options.labels[i];
       inputArray.push(
         <div className='row' key={'input' + i}>
           <div className='col m8'>
-            <input type='text' name={'label' + i} defaultValue={labelValue} onInput={this.handleLabelInput}/>
+            <input type='text' name={'label' + i}  defaultValue={labelValue} onInput={this.handleLabelInput}/>
           </div>
           <div className='col m3'> 
             <input type='number' name={i} onInput={this.inputEvent} defaultValue={dataValue}/>
@@ -98,23 +92,19 @@ class Barchart extends React.Component {
     }
     return inputArray;
   }
+    
 
   handleInput(e){
-    let currentCategories = this.state.options.xaxis.categories;
-    let currentData = this.state.series[0].data;
+    let currentCategories = this.state.options.labels;
+    let currentData = this.state.series;
     currentCategories.push("New");
     currentData.push(0);
     this.setState({
+      ...this.state.options,
       options: {
-        ...this.state.options,
-        xaxis:{
-          categories: currentCategories,
-        }
+        labels: currentCategories,
       },
-      series: [{
-        ...this.state.series,
-        data: currentData,
-      }]
+      series: currentData,
     }) 
     e.target.blur();
   }
@@ -131,7 +121,7 @@ class Barchart extends React.Component {
                   <Chart
                     options={this.state.options}
                     series={this.state.series}
-                    type="bar"
+                    type="pie"
                     width="700"
                   />
                 </div>
@@ -164,4 +154,4 @@ class Barchart extends React.Component {
   }
 }
 
-export default Barchart;
+export default Piechart;

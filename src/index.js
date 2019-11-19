@@ -9,6 +9,7 @@ import App from './components/app';
 import SideNav from './components/sidenav';
 import Test from './components/test';
 import Barchart from './components/barchart';
+import Piechart from './components/piechart';
 
 const routing = (
   <Router>
@@ -17,6 +18,7 @@ const routing = (
       <Route exact path="/" component={App} />
       <Route path="/test" component={Test} />
       <Route path="/bar" component={Barchart} />
+      <Route path='/pie' component={Piechart} />
     </div>
   </Router>
 )
