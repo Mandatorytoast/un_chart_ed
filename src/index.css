@@ -50,10 +50,13 @@ body {
 #side-nav i {
   color: #000000; }
 
-.chart h1 {
+.chart h1, .chart h2 {
   font-family: "Bebas Neue", cursive;
   text-align: center;
   margin-bottom: 40px; }
+
+.chart h2 {
+  font-size: 2em; }
 
 .chart input {
   background-color: #FA255e; }

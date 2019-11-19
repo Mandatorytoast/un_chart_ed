@@ -11,16 +11,18 @@ class Barchart extends React.Component {
           id: "example bar",
         },
         xaxis: {
-          categories: ["example 1", "example 2"],
+          categories: ["example"],
         }
       },
       series: [{
         name: "example-series",
-        data: [20, 30],
+        data: [10],
       }]
     }
     this.inputEvent = this.inputEvent.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handleLabelInput = this.handleLabelInput.bind(this);
+    this.handleRemoveInput = this.handleRemoveInput.bind(this);
   }
 
   inputEvent(e){
@@ -35,15 +37,64 @@ class Barchart extends React.Component {
     });
   }
 
+  handleLabelInput(e) {
+    let currentData = [ ...this.state.options.xaxis.categories ];
+    let targetLabel = parseInt(e.target.name.slice(-1));
+    currentData[targetLabel] = e.target.value;
+    this.setState({
+      options:{
+        ...this.state.options,
+        xaxis: {
+          categories: currentData,
+        } 
+      }
+    });
+  }
+
+  handleRemoveInput(e){
+    let currentData = [ ...this.state.series[0].data ];
+    let currentCategories = [ ...this.state.options.xaxis.categories ];
+    let index = parseInt(e.target.id.slice(-1));
+
+    currentData.splice(index, 1);
+    currentCategories.splice(index, 1)
+
+    this.setState({
+      options: {
+        ...this.state.options,
+        xaxis: {
+          categories: currentCategories,
+        },
+      },
+      series: [{
+        ...this.state.series[0],
+        data: currentData,
+      }]
+    });
+
+  }
+
   renderInput() { 
     let inputArray = []
     for (var i = 0; i < this.state.series[0].data.length; i++) {
-      inputArray.push(<input type='text' name={i} onInput={this.inputEvent}/>)
+      inputArray.push(
+        <div className='row' key={'input' + i}>
+          <div className='col m8'>
+            <input type='text' name={'label' + i} onInput={this.handleLabelInput}/>
+          </div>
+          <div className='col m3'> 
+            <input type='text' name={i} onInput={this.inputEvent}/>
+          </div> 
+          <div className='col m1'>
+            <button className='btn waves-effect' id={'remove-button' + i} onClick={this.handleRemoveInput}>Remove</button> 
+          </div>
+        </div>
+      )
     }
     return inputArray;
   }
 
-  handleInput(){
+  handleInput(e){
     let currentCategories = this.state.options.xaxis.categories;
     let currentData = this.state.series[0].data;
     currentCategories.push("New");
@@ -60,8 +111,8 @@ class Barchart extends React.Component {
         data: currentData,
       }]
     }) 
+    e.target.blur();
   }
-
 
   render() {
     return (
@@ -76,7 +127,7 @@ class Barchart extends React.Component {
                     options={this.state.options}
                     series={this.state.series}
                     type="bar"
-                    width="500"
+                    width="700"
                   />
                 </div>
               </div> 
@@ -84,10 +135,22 @@ class Barchart extends React.Component {
           </div>
           <div className="col l4">
             <div className="inputs">         
+              <div className='row'>
+                <div className= 'col m8'>
+                  <h2>
+                    Labels
+                  </h2>
+                </div>
+                <div className= 'col m4'>
+                  <h2>
+                    Data
+                  </h2>
+                </div>
+              </div>
               {this.renderInput()}
             </div>
             <div className="controls">
-              <button className='btn' onClick={this.handleInput}>add</button>
+              <button className='btn waves-effect' onClick={this.handleInput}>add</button>
             </div>
           </div>
         </div>

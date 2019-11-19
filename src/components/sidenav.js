@@ -22,7 +22,7 @@ class SideNav extends React.Component {
             <Link to="/">App</Link>
           </li>
           <li>
-            <Link to="/test">Test</Link>
+            <Link to="/bar">Bar Chart</Link>
           </li>
         </ul>
         <a href="#" data-target="slide-out" className="sidenav-trigger">
