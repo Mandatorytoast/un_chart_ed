@@ -1,6 +1,9 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 
+
+//use the state data in order to refresh the value of the inputfields 
+
 class Barchart extends React.Component {
   constructor(props) {
     super(props);
@@ -39,7 +42,7 @@ class Barchart extends React.Component {
 
   handleLabelInput(e) {
     let currentData = [ ...this.state.options.xaxis.categories ];
-    let targetLabel = parseInt(e.target.name.slice(-1));
+    let targetLabel = parseInt(e.target.name.slice(5, e.target.name.length));
     currentData[targetLabel] = e.target.value;
     this.setState({
       options:{
@@ -54,7 +57,7 @@ class Barchart extends React.Component {
   handleRemoveInput(e){
     let currentData = [ ...this.state.series[0].data ];
     let currentCategories = [ ...this.state.options.xaxis.categories ];
-    let index = parseInt(e.target.id.slice(-1));
+    let index = parseInt(e.target.id.slice(13, e.target.name.length));
 
     currentData.splice(index, 1);
     currentCategories.splice(index, 1)
@@ -77,13 +80,15 @@ class Barchart extends React.Component {
   renderInput() { 
     let inputArray = []
     for (var i = 0; i < this.state.series[0].data.length; i++) {
+      let dataValue = this.state.series[0].data[i]
+      let labelValue = this.state.options.xaxis.categories[i]
       inputArray.push(
         <div className='row' key={'input' + i}>
           <div className='col m8'>
-            <input type='text' name={'label' + i} onInput={this.handleLabelInput}/>
+            <input type='text' name={'label' + i} value={labelValue} onInput={this.handleLabelInput}/>
           </div>
           <div className='col m3'> 
-            <input type='text' name={i} onInput={this.inputEvent}/>
+            <input type='number' name={i} onInput={this.inputEvent} value={dataValue}/>
           </div> 
           <div className='col m1'>
             <button className='btn waves-effect' id={'remove-button' + i} onClick={this.handleRemoveInput}>Remove</button> 

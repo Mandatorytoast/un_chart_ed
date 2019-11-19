@@ -101,5 +101,9 @@ body {
       background-color: $red;
       color: #FFFFFF;
     } 
+    &:focus {
+      background-color: $red;
+      color: #FFFFFF;
+    }
   }
 }

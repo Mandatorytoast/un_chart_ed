@@ -69,3 +69,6 @@ body {
   .chart button:hover {
     background-color: #FA255e;
     color: #FFFFFF; }
+  .chart button:focus {
+    background-color: #FA255e;
+    color: #FFFFFF; }
