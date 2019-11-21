@@ -25,6 +25,8 @@ class Barchart extends React.Component {
     this.handleRemoveInput = this.handleRemoveInput.bind(this);
   }
 
+  //Changes the data in real time as the user types into 
+  //the data input boxes. 
   inputEvent(e){
     let currentData = [ ...this.state.series[0].data];
     let targetInt = parseInt(e.target.name)
@@ -37,6 +39,8 @@ class Barchart extends React.Component {
     });
   }
 
+  //Changes the Labels in real time as the user types into the
+  //label input boxes
   handleLabelInput(e) {
     let currentData = [ ...this.state.options.xaxis.categories ];
     let targetLabel = parseInt(e.target.name.slice(5, e.target.name.length));
@@ -51,6 +55,9 @@ class Barchart extends React.Component {
     });
   }
 
+  //Removes the row of inputs from the input area as well as
+  //removing the label and data point in state which 
+  //updates the graph in real time
   handleRemoveInput(e){
     let currentData = [ ...this.state.series[0].data ];
     let currentCategories = [ ...this.state.options.xaxis.categories ];
@@ -75,6 +82,9 @@ class Barchart extends React.Component {
 
   }
 
+  //Lpops through this.state.series[0].data.length and adds an input
+  //row to the input area with a unique id and name for each. Also
+  //sets the value for each of the inputs with the corrosponding state
   renderInput() { 
     let inputArray = []
     for (var i = 0; i < this.state.series[0].data.length; i++) {
@@ -97,6 +107,8 @@ class Barchart extends React.Component {
     return inputArray;
   }
 
+  //Handler for the add button, adds an extra point of data to state and
+  //a 'new' label to the end of categories
   handleInput(e){
     let currentCategories = [...this.state.options.xaxis.categories];
     let currentData = [...this.state.series[0].data];

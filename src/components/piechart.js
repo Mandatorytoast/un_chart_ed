@@ -25,6 +25,8 @@ class Piechart extends React.Component {
   }
     
 
+  //Changes the data in real time as the user types into 
+  //the data input boxes. 
   inputEvent(e){
     let currentData = [ ...this.state.series];
     let targetInt = parseInt(e.target.name);
@@ -44,6 +46,8 @@ class Piechart extends React.Component {
   }
     
 
+  //Changes the Labels in real time as the user types into the
+  //label input boxes
   handleLabelInput(e) {
     let currentData = [ ...this.state.options.labels ];
     let targetLabel = parseInt(e.target.name.slice(5, e.target.name.length));
@@ -56,6 +60,10 @@ class Piechart extends React.Component {
     });
   }
 
+
+  //Removes the row of inputs from the input area as well as
+  //removing the label and data point in state which 
+  //updates the graph in real time
   handleRemoveInput(e){
     let currentData = [ ...this.state.series];
     let currentCategories = [ ...this.state.options.labels ];
@@ -73,6 +81,9 @@ class Piechart extends React.Component {
 
   }
 
+  //Loops through this.state.series.length and adds an input
+  //row to the input area with a unique id and name for each. Also
+  //sets the value for each of the inputs with the corrosponding state
   renderInput() { 
     let inputArray = []
     for (var i = 0; i < this.state.series.length; i++) {
