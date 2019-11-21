@@ -6,7 +6,13 @@ class Piechart extends React.Component {
     super(props);
     this.state = {
       options: {
-        labels: ['Example A', 'Example B', 'Example C']
+        labels: ['Example A', 'Example B', 'Example C'],
+        theme:{
+          monochrome:{
+            enabled: true,
+            color: '#FA244E'
+          }
+        }
       },
 
       series: [22,33,44],
@@ -53,11 +59,9 @@ class Piechart extends React.Component {
   handleRemoveInput(e){
     let currentData = [ ...this.state.series];
     let currentCategories = [ ...this.state.options.labels ];
-    let index = parseInt(e.target.id.slice(13, e.target.name.length));
-
+    let index = parseInt(e.target.id.slice(13, e.target.id.length));
     currentData.splice(index, 1);
     currentCategories.splice(index, 1)
-
     this.setState({
       options: {
         ...this.state.options,
@@ -65,6 +69,7 @@ class Piechart extends React.Component {
       },
       series: currentData,
     });
+    e.target.blur()
 
   }
 

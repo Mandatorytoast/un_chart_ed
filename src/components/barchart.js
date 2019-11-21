@@ -11,12 +11,12 @@ class Barchart extends React.Component {
           id: "example bar",
         },
         xaxis: {
-          categories: [],
+          categories: ['Example A', 'Example B', 'Example C'],
         }
       },
       series: [{
         name: "example-series",
-        data: [],
+        data: [22,33,44],
       }]
     }
     this.inputEvent = this.inputEvent.bind(this);
@@ -54,7 +54,7 @@ class Barchart extends React.Component {
   handleRemoveInput(e){
     let currentData = [ ...this.state.series[0].data ];
     let currentCategories = [ ...this.state.options.xaxis.categories ];
-    let index = parseInt(e.target.id.slice(13, e.target.name.length));
+    let index = parseInt(e.target.id.slice(13, e.target.id.length));
 
     currentData.splice(index, 1);
     currentCategories.splice(index, 1)
@@ -71,6 +71,7 @@ class Barchart extends React.Component {
         data: currentData,
       }]
     });
+    e.target.blur();
 
   }
 
@@ -120,7 +121,7 @@ class Barchart extends React.Component {
   render() {
     return (
       <div className="chart">
-        <h1>Bar Chart</h1>
+        <h1>{this.props.type.toUpperCase()} Chart</h1>
         <div className="row">
           <div className="col l8">
             <div className="bar-chart">
@@ -129,7 +130,7 @@ class Barchart extends React.Component {
                   <Chart
                     options={this.state.options}
                     series={this.state.series}
-                    type='bar'
+                    type={this.props.type}
                     width="700"
                   />
                 </div>
@@ -161,5 +162,4 @@ class Barchart extends React.Component {
     )
   }
 }
-
 export default Barchart;
