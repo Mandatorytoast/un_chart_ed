@@ -12,12 +12,12 @@ class Radarchart extends React.Component {
           id: "example radar",
         },
         xaxis: {
-          categories: [],
+          categories: ['Example A', 'Example B', 'Example C'],
         }
       },
       series: [{
         name: "example-series",
-        data: [],
+        data: [10, 20, 5],
       }]
     }
     this.inputEvent = this.inputEvent.bind(this);

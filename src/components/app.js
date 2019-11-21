@@ -25,10 +25,10 @@ class App extends React.Component {
               </Link>
             </div>
             <div className="col s12 m12 l4">
-              <Link to="/line">
+              <Link to="/radar">
                 <div className="s">
                   <img src="https://www.excel-easy.com/examples/images/line-chart/line-chart.png" alt="line chart" />
-                  <h2>line</h2>
+                  <h2>radar</h2>
                 </div>
               </Link>
             </div>
@@ -41,12 +41,7 @@ class App extends React.Component {
               </Link>
             </div>
           </div>
-          <p>
-            For even more options, click the hamburger menu icon at the top left of the page.<br />
-            Alternatively, on mobile, just swipe from the left.
-          </p>
         </div>
-
       </div>
     )
   }
