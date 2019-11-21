@@ -11,12 +11,12 @@ class Barchart extends React.Component {
           id: "example bar",
         },
         xaxis: {
-          categories: ["example"],
+          categories: [],
         }
       },
       series: [{
         name: "example-series",
-        data: [10],
+        data: [],
       }]
     }
     this.inputEvent = this.inputEvent.bind(this);
@@ -97,8 +97,9 @@ class Barchart extends React.Component {
   }
 
   handleInput(e){
-    let currentCategories = this.state.options.xaxis.categories;
-    let currentData = this.state.series[0].data;
+    let currentCategories = [...this.state.options.xaxis.categories];
+    let currentData = [...this.state.series[0].data];
+    console.log(currentCategories)
     currentCategories.push("New");
     currentData.push(0);
     this.setState({
@@ -128,7 +129,7 @@ class Barchart extends React.Component {
                   <Chart
                     options={this.state.options}
                     series={this.state.series}
-                    type="bar"
+                    type='bar'
                     width="700"
                   />
                 </div>

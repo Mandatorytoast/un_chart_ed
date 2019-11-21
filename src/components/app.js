@@ -25,7 +25,7 @@ class App extends React.Component {
               </Link>
             </div>
             <div className="col s12 m12 l4">
-              <Link to="/test">
+              <Link to="/line">
                 <div className="s">
                   <img src="https://www.excel-easy.com/examples/images/line-chart/line-chart.png" alt="line chart" />
                   <h2>line</h2>
@@ -33,7 +33,7 @@ class App extends React.Component {
               </Link>
             </div>
             <div className="col s12 m12 l4">
-              <Link to="/test">
+              <Link to="/pie">
                 <div className="s">
                   <img src="https://1.bp.blogspot.com/-nyrFCBD1qQM/WZEoxmDoW-I/AAAAAAAAQew/LLIM0FtNdzQb3IRvtoTYgWpvKoajz6HJgCLcBGAs/s1600/Angular%2B4%2B%2Bpie%2Bchart%2Bexample.png" alt="pie chart"/>
                   <h2>pie</h2>

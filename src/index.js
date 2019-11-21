@@ -10,6 +10,7 @@ import SideNav from './components/sidenav';
 import Test from './components/test';
 import Barchart from './components/barchart';
 import Piechart from './components/piechart';
+import Radarchart from './components/radar';
 
 const routing = (
   <Router>
@@ -19,6 +20,7 @@ const routing = (
       <Route path="/test" component={Test} />
       <Route path="/bar" component={Barchart} />
       <Route path='/pie' component={Piechart} />
+      <Route path='/radar' component={Radarchart} />
     </div>
   </Router>
 )

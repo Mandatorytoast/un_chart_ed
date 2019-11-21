@@ -1,58 +1,60 @@
+
 import React from 'react';
 import Chart from 'react-apexcharts';
 
-class Piechart extends React.Component {
+class Radarchart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       options: {
-        labels: ['Example A', 'Example B', 'Example C']
+        colors: ["#FA255e"],
+        chart: {
+          id: "example radar",
+        },
+        xaxis: {
+          categories: [],
+        }
       },
-
-      series: [22,33,44],
+      series: [{
+        name: "example-series",
+        data: [],
+      }]
     }
-
-    this.handleInput = this.handleInput.bind(this);
     this.inputEvent = this.inputEvent.bind(this);
+    this.handleInput = this.handleInput.bind(this);
     this.handleLabelInput = this.handleLabelInput.bind(this);
     this.handleRemoveInput = this.handleRemoveInput.bind(this);
   }
-    
 
   inputEvent(e){
-    let currentData = [ ...this.state.series];
-    let targetInt = parseInt(e.target.name);
-    if (isNaN(parseInt(e.target.value))){
-      currentData[targetInt] = 0;
-    } else {
-      if (parseInt(e.target.value.slice(0, 1)) === 0){
-        currentData[targetInt] = parseInt(e.target.value.slice(1, e.target.value.length));
-        e.target.value = currentData[targetInt];
-      }else {
-        currentData[targetInt] = parseInt(e.target.value);
-      }
-    }
+    let currentData = [ ...this.state.series[0].data];
+    let targetInt = parseInt(e.target.name)
+    currentData[targetInt] = parseInt(e.target.value)
     this.setState({
-      series: currentData,
+      series:[{
+        ...this.state.series[0],
+        data: currentData,
+      }]
     });
   }
-    
 
   handleLabelInput(e) {
-    let currentData = [ ...this.state.options.labels ];
+    let currentData = [ ...this.state.options.xaxis.categories ];
     let targetLabel = parseInt(e.target.name.slice(5, e.target.name.length));
     currentData[targetLabel] = e.target.value;
     this.setState({
       options:{
         ...this.state.options,
-        labels: currentData,
+        xaxis: {
+          categories: currentData,
+        } 
       }
     });
   }
 
   handleRemoveInput(e){
-    let currentData = [ ...this.state.series];
-    let currentCategories = [ ...this.state.options.labels ];
+    let currentData = [ ...this.state.series[0].data ];
+    let currentCategories = [ ...this.state.options.xaxis.categories ];
     let index = parseInt(e.target.id.slice(13, e.target.name.length));
 
     currentData.splice(index, 1);
@@ -61,22 +63,27 @@ class Piechart extends React.Component {
     this.setState({
       options: {
         ...this.state.options,
-        labels: currentCategories,
+        xaxis: {
+          categories: currentCategories,
+        },
       },
-      series: currentData,
+      series: [{
+        ...this.state.series[0],
+        data: currentData,
+      }]
     });
 
   }
 
   renderInput() { 
     let inputArray = []
-    for (var i = 0; i < this.state.series.length; i++) {
-      let dataValue = this.state.series[i];
-      let labelValue = this.state.options.labels[i];
+    for (var i = 0; i < this.state.series[0].data.length; i++) {
+      let dataValue = this.state.series[0].data[i]
+      let labelValue = this.state.options.xaxis.categories[i]
       inputArray.push(
         <div className='row' key={'input' + i}>
           <div className='col m8'>
-            <input type='text' name={'label' + i}  value={labelValue} onChange={this.handleLabelInput}/>
+            <input type='text' name={'label' + i} value={labelValue} onChange={this.handleLabelInput}/>
           </div>
           <div className='col m3'> 
             <input type='number' name={i} onChange={this.inputEvent} value={dataValue}/>
@@ -89,19 +96,24 @@ class Piechart extends React.Component {
     }
     return inputArray;
   }
-    
 
   handleInput(e){
-    let currentCategories = this.state.options.labels;
-    let currentData = this.state.series;
+    let currentCategories = [...this.state.options.xaxis.categories];
+    let currentData = [...this.state.series[0].data];
+    console.log(currentCategories)
     currentCategories.push("New");
     currentData.push(0);
     this.setState({
-      ...this.state.options,
       options: {
-        labels: currentCategories,
+        ...this.state.options,
+        xaxis:{
+          categories: currentCategories,
+        }
       },
-      series: currentData,
+      series: [{
+        ...this.state.series,
+        data: currentData,
+      }]
     }) 
     e.target.blur();
   }
@@ -109,16 +121,16 @@ class Piechart extends React.Component {
   render() {
     return (
       <div className="chart">
-        <h1>Bar Chart</h1>
+        <h1>Radar Chart</h1>
         <div className="row">
           <div className="col l8">
-            <div className="bar-chart">
+            <div className="radar-chart">
               <div className="row">
                 <div className="mixed-chart">
                   <Chart
                     options={this.state.options}
                     series={this.state.series}
-                    type="pie"
+                    type='radar'
                     width="700"
                   />
                 </div>
@@ -151,4 +163,4 @@ class Piechart extends React.Component {
   }
 }
 
-export default Piechart;
+export default Radarchart;
